@@ -19,13 +19,13 @@ jobs:
     steps:
       # Checkout code with the latest stable version of checkout action
       - name: Checkout code
-        uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
+        uses: actions/checkout@v5  # Ensure you're using the latest version of actions/checkout
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
       # Setup Node.js 24 explicitly with setup-node
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Use the stable version of actions/setup-node
+        uses: actions/setup-node@v5  # Use the stable version of actions/setup-node
         with:
           node-version: 24  # Ensure Node.js 24 is used
           cache: 'npm'
