@@ -1,0 +1,11 @@
+npm test
+
+# Lint fix
+npm run lint:fix
+
+# Format check
+npm run format:check
+
+# Type check
+npm run type-check
+
