@@ -13,23 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24]  # Use Node.js 24 instead of Node.js 20
+        node-version: [24]  # Use Node.js 24
     steps:
-      # Opt into Node.js 24 for the actions
+      # Force Node.js 24 for actions
       - name: Force Node.js 24
         run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true" >> $GITHUB_ENV
 
-      # Checkout code with ref: ensure we are using the latest commit hash
+      # Checkout code with the latest stable version of checkout action
       - name: Checkout code
-        uses: actions/checkout@v4  # Use the updated checkout action
+        uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
-      # Setup Node.js 24 explicitly with setup-node
+      # Setup Node.js 24 with the latest version of setup-node action
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Node.js setup
+        uses: actions/setup-node@v4  # Ensure you're using the latest version of actions/setup-node
         with:
-          node-version: 24  # Set Node.js to 24
+          node-version: 24  # Ensure Node.js 24 is used
           cache: 'npm'
 
       # Install dependencies
@@ -70,7 +70,7 @@ jobs:
     steps:
       # Checkout code
       - name: Checkout code
-        uses: actions/checkout@v4  # Use the updated checkout action
+        uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
 
       # Setup Docker Buildx
       - name: Setup Docker Buildx
