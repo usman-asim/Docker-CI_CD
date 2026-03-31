@@ -8,8 +8,7 @@ on:
     branches:
       - '*'  # This matches all pull requests
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Ensure Node.js 24 is used
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Enforce Node.js 24 across actions
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  
 
 jobs:
   build:
