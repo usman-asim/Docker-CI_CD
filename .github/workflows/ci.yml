@@ -8,7 +8,7 @@ on:
     branches:
       - '*'  # This matches all pull requests
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Ensure Node.js 24 is used
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Enforce Node.js 24 across actions
 
 jobs:
   build:
@@ -17,15 +17,19 @@ jobs:
       matrix:
         node-version: [24]  # Use Node.js 24
     steps:
-      # Checkout code with the latest stable version of checkout action
+      - name: Clean the environment
+        run: |
+          rm -rf node_modules
+          rm package-lock.json
+      # Checkout code with the latest stable version of actions/checkout
       - name: Checkout code
-        uses: actions/checkout@v5  # Ensure you're using the latest version of actions/checkout
+        uses: actions/checkout@v4  # Ensure using the latest stable version of actions/checkout
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
-      # Setup Node.js 24 explicitly with setup-node
+      # Setup Node.js 24 explicitly with actions/setup-node
       - name: Set up Node.js
-        uses: actions/setup-node@v5  # Use the stable version of actions/setup-node
+        uses: actions/setup-node@v4  # Ensure you're using the stable version of actions/setup-node
         with:
           node-version: 24  # Ensure Node.js 24 is used
           cache: 'npm'
@@ -72,7 +76,7 @@ jobs:
     steps:
       # Checkout code for deployment
       - name: Checkout code
-        uses: actions/checkout@v4  # Use the latest version of actions/checkout
+        uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
 
       # Setup Docker Buildx
       - name: Setup Docker Buildx
