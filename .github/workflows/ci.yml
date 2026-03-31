@@ -13,21 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: 20
+        node-version: [20.19.2]
     steps:
      # Checkout code with ref: ensure we are using the latest commit hash
       - name: Checkout code
-        uses: actions/checkout@v3  # Use the updated checkout action
+        uses: actions/checkout@v4  # Use the updated checkout action
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
       # Setup Node.js 18 explicitly with setup-node
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Node.js setup
+        uses: actions/setup-node@v4  # Node.js setup
         with:
-          node-version: 20 # Ensure Node 18 is used
+          node-version: ${{ matrix.node-version }} # Ensure Node 18 is used
           cache: 'npm'
-          cache-dependency-path: package-lock.json  # Explicit cache path
 
       # Install dependencies
       - name: Install dependencies
@@ -67,7 +66,7 @@ jobs:
     steps:
       # Checkout code
       - name: Checkout code
-        uses: actions/checkout@v3  # Use the updated checkout action
+        uses: actions/checkout@v4  # Use the updated checkout action
 
       # Setup Docker Buildx
       - name: Setup Docker Buildx
