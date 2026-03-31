@@ -18,16 +18,17 @@ jobs:
         node-version: [24]  # Use Node.js 24
     steps:
       # Checkout code with the latest stable version of actions/checkout
-      # - name: Checkout code
-      #   uses: actions/checkout@v4 # Stable version of actions/checkout
+      - name: Checkout code
+        uses: actions/checkout@v4 # Stable version of actions/checkout
       #   with:
       #     ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
       # # Setup Node.js 24 explicitly with setup-node
-
-      # # Clear npm cache in case of any corrupted cache
-      # - name: Clear npm cache
-      #   run: npm cache clean --force
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  # Stable version of actions/setup-node
+      #   with:
+      #     node-version: ${{ matrix.node-version }}  # Ensure Node.js 24 is used
+      #     cache: 'npm'
 
       # Install dependencies
       - name: Install dependencies
@@ -37,11 +38,6 @@ jobs:
       - name: Build
         run: npm run build --verbose  # Run build with verbose output to debug issues
 
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v5  # Stable version of actions/setup-node
-      #   with:
-      #     node-version: ${{ matrix.node-version }}  # Ensure Node.js 24 is used
-      #     cache: 'npm'
       # TypeScript type check
       - name: TypeScript type check
         run: npx tsc --noEmit  # Run type-check without emitting JavaScript files
