@@ -25,7 +25,7 @@ jobs:
 
       # Setup Node.js 24 explicitly with setup-node
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Stable version of actions/setup-node
+        uses: actions/setup-node@v5  # Stable version of actions/setup-node
         with:
           node-version: 24  # Ensure Node.js 24 is used
           cache: 'npm'
@@ -73,6 +73,13 @@ jobs:
       # Checkout code for deployment
       - name: Checkout code
         uses: actions/checkout@v4  # Use the latest version of actions/checkout
+
+      # Setup Node.js 24 so npm ci --production runs on Node 24
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: 'npm'
 
       # Setup Docker Buildx
       - name: Setup Docker Buildx
