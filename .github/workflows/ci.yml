@@ -13,13 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: 20.x  
+        node-version: 20
     steps:
-      # Force Node.js 18 for actions and setup
-      - name: Force Node.js 18
-        run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE18=true" >> $GITHUB_ENV
-
-      # Checkout code with ref: ensure we are using the latest commit hash
+     # Checkout code with ref: ensure we are using the latest commit hash
       - name: Checkout code
         uses: actions/checkout@v3  # Use the updated checkout action
         with:
