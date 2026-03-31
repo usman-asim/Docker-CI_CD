@@ -92,4 +92,5 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: ${{ secrets.DOCKER_USERNAME }}/docker-cicd:latest
+          tags: usman/docker-cicd:latest
+          push:true

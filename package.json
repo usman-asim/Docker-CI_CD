@@ -1,6 +1,6 @@
 {
   "name": "docker-cicd",
-  "private":true,
+  "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "nodemon app.ts",
