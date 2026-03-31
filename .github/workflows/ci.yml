@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - '*'  # This matches all pull requests
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
 jobs:
   build:
@@ -15,10 +17,6 @@ jobs:
       matrix:
         node-version: [24]  # Use Node.js 24
     steps:
-      # Force Node.js 24 for actions
-      - name: Force Node.js 24
-        run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true" >> $GITHUB_ENV
-
       # Checkout code with the latest stable version of checkout action
       - name: Checkout code
         uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
