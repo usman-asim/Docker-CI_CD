@@ -10,15 +10,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true  # Set Node.js 24 for your workflow
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Set Node.js 24 for your workflow
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2 # Ensure the latest version (v4, if available)
+        uses: actions/checkout@v5 # Ensure the latest version (v4, if available)
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-       # Ensure the latest version (v6, if available)
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v6
+      #  # Ensure the latest version (v6, if available)
       
       - name: Install dependencies
         run: npm ci
