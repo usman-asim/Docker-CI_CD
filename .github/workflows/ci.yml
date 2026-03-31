@@ -19,7 +19,7 @@ jobs:
     steps:
       # Checkout code with the latest stable version of actions/checkout
       - name: Checkout code
-        uses: actions/checkout@v5  # Stable version of actions/checkout
+        uses: actions/checkout@v6 # Stable version of actions/checkout
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
