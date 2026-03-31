@@ -26,7 +26,7 @@ jobs:
           cache-dependency-path: package-lock.json  # Explicit cache path
 
       - name: Install dependencies
-        run: npm install --verbose  # Run npm install with verbose output for debugging
+        run: npm ci  # Run npm install with verbose output for debugging
 
       - name: Build
         run: npm run build
