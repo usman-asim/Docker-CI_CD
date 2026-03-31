@@ -93,4 +93,4 @@ jobs:
           context: .
           file: Dockerfile
           tags: usman/docker-cicd:latest
-          push:true
+           push:true
