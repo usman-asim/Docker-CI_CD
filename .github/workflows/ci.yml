@@ -21,7 +21,7 @@ jobs:
       #  # Ensure the latest version (v6, if available)
       
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --production
       
       # - name: Run lin
       #   run: npm run lint
