@@ -1,7 +1,8 @@
 {
   "name": "docker-cicd",
-  "version": "1.0.0",
-  "main": "dist/app.js",
+  "private":true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "nodemon app.ts",
     "build": "tsc",
