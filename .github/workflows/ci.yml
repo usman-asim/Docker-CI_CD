@@ -13,9 +13,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [24]  # Use Node.js 24
+    # strategy:
+    #   matrix:
+    #     node-version: [24]  # Use Node.js 24
     steps:
       # Checkout code with the latest stable version of actions/checkout
       - name: Checkout code
