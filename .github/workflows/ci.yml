@@ -77,7 +77,7 @@ jobs:
 
       # Install production dependencies
       - name: Install production dependencies
-        run: npm ci --production  # Install only production dependencies
+        run: npm install --production  # Install only production dependencies
 
       # Login to Docker Hub
       - name: Login to Docker Hub
