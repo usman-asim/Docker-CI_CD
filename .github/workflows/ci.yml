@@ -13,17 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24]  # Align with Docker version for consistency
+        node-version: [24]  # Use Node.js 24
     steps:
-      # Force Node.js 24 before setting up Node.js
+      # Force Node.js 24
       - name: Force Node.js 24
         run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true" >> $GITHUB_ENV
 
       - name: Checkout code
-        uses: actions/checkout@v5  # Use the updated checkout action
+        uses: actions/checkout@v3  # Use the updated checkout action
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Corrected to v3 (latest stable)
+        uses: actions/setup-node@v3  # Node.js setup
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5  # Use the updated checkout action
+        uses: actions/checkout@v3  # Use the updated checkout action
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
