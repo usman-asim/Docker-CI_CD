@@ -13,23 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24]  # Use Node.js 24
+        node-version: [18]  # Use Node.js 18
     steps:
-      # Ensure Node.js 24 is enforced for both actions
-      - name: Force Node.js 24
-        run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true" >> $GITHUB_ENV
+      # Force Node.js 18 for actions and setup
+      - name: Force Node.js 18
+        run: echo "FORCE_JAVASCRIPT_ACTIONS_TO_NODE18=true" >> $GITHUB_ENV
 
-      # Checkout code
+      # Checkout code with ref: ensure we are using the latest commit hash
       - name: Checkout code
         uses: actions/checkout@v3  # Use the updated checkout action
         with:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
-      # Setup Node.js
+      # Setup Node.js 18 explicitly with setup-node
       - name: Set up Node.js
         uses: actions/setup-node@v3  # Node.js setup
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}  # Ensure Node 18 is used
           cache: 'npm'
           cache-dependency-path: package-lock.json  # Explicit cache path
 
