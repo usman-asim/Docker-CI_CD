@@ -17,7 +17,9 @@ jobs:
         uses: actions/checkout@v4  # Ensure the latest version (v4, if available)
       
       - name: Setup Node.js
-        uses: actions/setup-node@v5  # Ensure the latest version (v6, if available)
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24  # Ensure the latest version (v6, if available)
       
       - name: Install dependencies
         run: npm ci
