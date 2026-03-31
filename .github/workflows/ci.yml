@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # Set Node.js 24 for your workflow
+      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true  # Set Node.js 24 for your workflow
     
     steps:
       - name: Checkout code
