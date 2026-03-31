@@ -92,6 +92,6 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: usman/docker-cicd:latest
+          tags: usmanasim295/usman:latest
           push: true
            
