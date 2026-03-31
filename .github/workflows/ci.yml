@@ -7,8 +7,10 @@ on:
   pull_request:
     branches:
       - '*'  # This matches all pull requests
+
 env:
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true  # Temporarily suppress warnings
 
 jobs:
   build:
@@ -17,30 +19,30 @@ jobs:
       matrix:
         node-version: [24]  # Use Node.js 24
     steps:
-      # Checkout code with the latest stable version of checkout action
+      # Checkout code with the stable version of checkout action
       - name: Checkout code
-        uses: actions/checkout@v5  # Ensure you're using the latest version of actions/checkout
+        uses: actions/checkout@v4  # Use the stable version of actions/checkout
         with:
-          ref: ${{ github.sha }}  # Ensure the latest commit hash is used
+          ref: ${{ github.sha }}
 
       # Setup Node.js 24 explicitly with setup-node
       - name: Set up Node.js
-        uses: actions/setup-node@v5  # Ensure you're using the latest version of actions/setup-node
+        uses: actions/setup-node@v4  # Use the stable version of actions/setup-node
         with:
-          node-version: 24  # Ensure Node.js 24 is used
+          node-version: 24
           cache: 'npm'
 
-      # Clear npm cache (in case of corrupted cache)
+      # Clear npm cache in case of any corrupted cache
       - name: Clear npm cache
         run: npm cache clean --force
 
       # Install dependencies
       - name: Install dependencies
-        run: npm ci --verbose  # Run npm install with verbose output for debugging
+        run: npm ci --verbose
 
       # Build project
       - name: Build
-        run: npm run build --verbose  # Run build with verbose output to debug issues
+        run: npm run build --verbose  # Run build with verbose output
 
       # TypeScript type check
       - name: TypeScript type check
@@ -70,9 +72,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # Checkout code
+      # Checkout code for deployment
       - name: Checkout code
-        uses: actions/checkout@v4  # Ensure you're using the latest version of actions/checkout
+        uses: actions/checkout@v4
 
       # Setup Docker Buildx
       - name: Setup Docker Buildx
@@ -80,7 +82,7 @@ jobs:
 
       # Install production dependencies
       - name: Install production dependencies
-        run: npm ci --production  # Install only production dependencies
+        run: npm ci --production
 
       # Login to Docker Hub
       - name: Login to Docker Hub
