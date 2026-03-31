@@ -48,20 +48,20 @@ jobs:
         run: npm run type-check
 
       # Lint code
-      # - name: Lint
-      #   run: npm run lint
+      - name: Lint
+        run: npm run lint
 
-      # # Fix lint issues
-      # - name: Lint fix
-      #   run: npm run lint:fix
+      # Fix lint issues
+      - name: Lint fix
+        run: npm run lint:fix
 
-      # # Format code
-      # - name: Format
-      #   run: npm run format
+      # Format code
+      - name: Format
+        run: npm run format
 
-      # # Check formatting
-      # - name: Format check
-      #   run: npm run format:check
+      # Check formatting
+      - name: Format check
+        run: npm run format:check
 
       
   deploy:
