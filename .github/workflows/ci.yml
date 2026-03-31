@@ -24,11 +24,6 @@ jobs:
           ref: ${{ github.sha }}  # Ensure the latest commit hash is used
 
       # Setup Node.js 24 explicitly with setup-node
-      - name: Set up Node.js
-        uses: actions/setup-node@v5  # Stable version of actions/setup-node
-        with:
-          node-version: 24  # Ensure Node.js 24 is used
-          cache: 'npm'
 
       # Clear npm cache in case of any corrupted cache
       - name: Clear npm cache
@@ -42,6 +37,11 @@ jobs:
       - name: Build
         run: npm run build --verbose  # Run build with verbose output to debug issues
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v5  # Stable version of actions/setup-node
+        with:
+          node-version: 24  # Ensure Node.js 24 is used
+          cache: 'npm'
       # TypeScript type check
       - name: TypeScript type check
         run: npx tsc --noEmit  # Run type-check without emitting JavaScript files
