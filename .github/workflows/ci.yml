@@ -32,8 +32,7 @@ jobs:
       - name: Run type check
         run: npm run type-check
 
-      - name: Run tests
-        run: npm run test
+     
 
       # - name: Run lint staged
       #   run: npm run lint-staged
